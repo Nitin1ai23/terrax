@@ -104,9 +104,4 @@ cd frontend && npm run lint   # tsc strict typecheck
 
 ---
 
-## Design system
 
-Dark, technical palette built around terrain green `#2AFFA0`. Space Grotesk
-display, Inter body, JetBrains Mono for data. The signature element is the live
-animated topographic contour field used across hero, previews, and loaders —
-all SVG, no stock imagery.
