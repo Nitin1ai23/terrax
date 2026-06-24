@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-void: #080c10;
+  --surface: #0f1519;
+  --border: #1e2a33;
+  --accent-topo: #2affa0;
+  --accent-data: #ff6b35;
+  --text-primary: #e8edf2;
+  --text-muted: #6b7f8c;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-void text-text-primary font-body antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  ::selection {
+    background: var(--accent-topo);
+    color: var(--bg-void);
+  }
+  /* Links never use default blue — design rule #1 */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .data-label {
+    @apply font-mono text-text-muted uppercase tracking-[0.18em] text-xs;
+  }
+  .num {
+    @apply font-mono tabular-nums;
+  }
+  .surface-card {
+    @apply bg-surface border border-border rounded-lg;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-topo text-void font-display font-semibold
+      px-6 py-3 rounded-md transition-all duration-200 hover:shadow-[0_0_28px_-6px_rgba(42,255,160,0.6)]
+      hover:-translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-topo
+      focus-visible:outline-offset-2;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-border text-text-primary
+      font-display font-medium px-6 py-3 rounded-md transition-colors duration-200
+      hover:border-topo/60 hover:text-topo focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-topo focus-visible:outline-offset-2;
+  }
+  .link-topo {
+    @apply text-topo inline-flex items-center gap-1.5 transition-all duration-200 hover:gap-2.5;
+  }
+}
+
+/* Pulsing contour loader — design rule #4 (no spinners) */
+.contour-loader path {
+  stroke-dasharray: 200;
+  animation: pulse-ring 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin technical scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3d49;
+}

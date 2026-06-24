@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Env
+.env
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Data
+*.tif
+*.las
+*.laz
+uploads/
